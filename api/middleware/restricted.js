@@ -1,4 +1,4 @@
-const JWT_SECRET = require('../secrets/index')
+const { JWT_SECRET } = require('../secrets/index')
 const jwt = require('jsonwebtoken')
 
 module.exports = (req, res, next) => {

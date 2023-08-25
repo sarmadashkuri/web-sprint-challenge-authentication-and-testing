@@ -1,5 +1,12 @@
 const { findBy } = require('../users/user-model')
 
+const checkLoginInputs = async (req, res, next) => {
+    const { username, password } = req.body;
+    if (!username || !password) {
+        next({ status: 400, message: 'username and password required' })
+    } else next()
+}
+
 const checkUsernameExists = async (req, res, next) => {
     const { username } = req.body
     try {
@@ -13,5 +20,6 @@ const checkUsernameExists = async (req, res, next) => {
 }
 
 module.exports = {
+    checkLoginInputs,
     checkUsernameExists,
 }
